@@ -16,19 +16,37 @@ router.post('/api/shorturl', async (req, res) => {
             })
         }
 
-        dns.lookup('dnsURL', (err, address) => {
-        if (err) {
-            throw new Error('dns')
-        }})
+        //DNS starts here
+        
+
+        // var dnsLookup = new Promise((resolve, reject) => {
+        //     dns.lookup('google.com', function(err, addresses, family) {
+        //         if (err) reject(err);
+        //         resolve(addresses);
+        //     });
+        // });
+        
+        // dnsLookup.catch((error) => {
+        //     return res.json({
+        //         error: 'No Host'
+        //     })
+        // })        
+
+        //DNS ends here
     
-        let count = await mongoose.connection.db.collection('data').countDocuments()
+        let count = await mongoose.connection.db.collection('datas').countDocuments()
+
+        //console.log(count);
+        
         if (count == 0) {
             count = 1;
         }
         else {
             count++;
         }
-    
+
+        //console.log(count);
+
         const newRequest = new model({
             assigned: count,
             url: req.body.url
@@ -43,6 +61,10 @@ router.post('/api/shorturl', async (req, res) => {
         
     } catch (error) {
         console.log(error);
+        res.json({
+            errorType: 'Internal Error',
+            errorMsg: error
+        })
     }
 
 })

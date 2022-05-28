@@ -1,4 +1,5 @@
 const validator = require('validator');
+//const dns = require('dns');
 
 const options = {
     protocols: ['http','https','ftp'],
@@ -18,6 +19,5 @@ const valid2 = (assigned) => {
     }
     return false
 }
-
 
 module.exports = {valid, valid2}

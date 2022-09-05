@@ -1,6 +1,6 @@
 # URL Shortener Microservice
 
-This is the solution for the Exercise-Tracker Microservice project.
+This is the solution for the URL Shortener Microservice project.
 
 # Test & Requirements:
 
